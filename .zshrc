@@ -115,3 +115,4 @@ function tmux_automatically_attach_session()
 }
 tmux_automatically_attach_session
 
+export PATH="/usr/local/sbin:$PATH"
