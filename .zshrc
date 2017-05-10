@@ -15,7 +15,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 
 #その他のalias設定
-alias l='ls -ltra@ '
+alias l='ls -ltraG '
 alias vi='vim'
 
 # cd した先のディレクトリをディレクトリスタックに追加する

@@ -1,1 +1,1 @@
-/Users/cadmin/dotfiles_macbook/.vim
+/Users/haruka/dotfiles_macbook/.vim
