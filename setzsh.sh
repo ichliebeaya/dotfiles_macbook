@@ -10,3 +10,5 @@ git clone git://github.com/zsh-users/zaw.git
 #copy .zshrc .zshenv
 sh ~/dotfiles_macbook/dotfileLinks.sh
 
+
+

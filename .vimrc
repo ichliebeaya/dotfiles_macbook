@@ -1,5 +1,6 @@
 set number
 set nocompatible
+set backspace=indent,eol,start
 
 if &compatible
   set nocompatible
