@@ -27,3 +27,4 @@ syntax enable
 set background=dark
 colorscheme solarized
 set hls
+filetype plugin on
