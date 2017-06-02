@@ -1,1 +1,0 @@
-/Users/haruka/dotfiles_macbook/.vim
