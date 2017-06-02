@@ -17,6 +17,7 @@ alias ....='cd ../../..'
 #その他のalias設定
 alias l='ls -ltraG '
 alias vi='vim'
+alias aws='ssh -i "~/.ssh/MyFirstInstance.pem" ec2-user@ec2-13-58-92-97.us-east-2.compute.amazonaws.com'
 
 # cd した先のディレクトリをディレクトリスタックに追加する
 # ディレクトリスタックとは今までに行ったディレクトリの履歴のこと
