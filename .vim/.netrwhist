@@ -1,5 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/Users/haruka/.vim/bundle/neobundle.vim'
-let g:netrw_dirhist_2='/usr/local/bin'
-let g:netrw_dirhist_3='/Library/WebServer/Documents'
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/Users/satoshi/dotfiles_macbook/.vim/dein/repos/github.com/Shougo/dein.vim'

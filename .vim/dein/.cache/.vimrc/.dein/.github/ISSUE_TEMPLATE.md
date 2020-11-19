@@ -13,7 +13,8 @@
 
 ```vim
 " Your minimal .vimrc
-set runtimepath+=~/path/to/unite.nvim/
+set runtimepath+=~/path/to/neocomplete.nvim/
+let g:neocomplete#enable_at_startup = 1
 ```
 
 

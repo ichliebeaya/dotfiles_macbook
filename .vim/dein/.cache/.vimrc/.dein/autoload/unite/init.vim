@@ -19,8 +19,7 @@ let g:unite_quick_match_table =
       \     '1' : 20, '2' : 21, '3' : 22, '4' : 23, '5' : 24, '6' : 25, '7' : 26, '8' : 27, '9' : 28, '0' : 29,
       \ })
 let g:unite_redraw_hold_candidates =
-      \ get(g:, 'unite_redraw_hold_candidates',
-      \     (unite#util#has_lua() ? 20000 : 10000))
+      \ get(g:, 'unite_redraw_hold_candidates', 10000)
 let g:unite_enable_auto_select =
       \ get(g:, 'unite_enable_auto_select', 1)
 let g:unite_restore_alternate_file =
@@ -230,12 +229,6 @@ function! unite#init#_unite_buffer() abort "{{{
 
   let &l:wrap = context.wrap
 
-  if exists('&redrawtime')
-    " Save redrawtime
-    let unite.redrawtime_save = &redrawtime
-    let &redrawtime = 100
-  endif
-
   call unite#handlers#_save_updatetime()
 
   " User's initialization.
@@ -254,11 +247,6 @@ function! unite#init#_current_unite(sources, context) abort "{{{
     let winnr = unite#helper#get_unite_winnr(context.buffer_name)
     if winnr > 0
       execute winnr 'wincmd w'
-
-      if context.input == ''
-        " Get input text.
-        let context.input = unite#helper#get_input()
-      endif
     endif
   endif
 

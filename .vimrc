@@ -16,6 +16,7 @@ if dein#load_state(s:dein_path)
 	call dein#add('tpope/vim-surround')
 	call dein#add('altercation/vim-colors-solarized')
 	call dein#end()
+	call dein#save_state()
 endif
 
 if dein#check_install()

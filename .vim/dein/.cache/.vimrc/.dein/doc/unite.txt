@@ -474,8 +474,7 @@ g:unite_redraw_hold_candidates		*g:unite_redraw_hold_candidates*
 		If the number of unite candidates is not greater than this
 		variable, all the candidates are holded for redrawing.
 
-		If lua is enabled, the default value is 20000, otherwise
-		10000.
+		The default value is 10000.
 
 g:unite_enable_auto_select		*g:unite_enable_auto_select*
 		If it is 1, unite skip first candidate when cursor is on the
@@ -2468,8 +2467,8 @@ line		Nominates current buffer lines as candidates.
 		Source arguments:
 		1. the search direction:
 		"all":       Search from buffer top
-		"forward":   Search from the current to the buffer top
-		"backward":  Search from the current to the buffer bottom
+		"backward":   Search from the current to the buffer top
+		"forward":  Search from the current to the buffer bottom
 		"buffers":   Search from all buffers
 		"args":      Search from argument buffers
 		Note: If the direction is "all" or omitted, it searches from
@@ -3893,7 +3892,7 @@ the |:UniteResume| feature.
 
 Q: unite.vim is too slow.
 
-A: Use Vim 7.3.885 or above with |if_lua| feature; unite.vim gets faster.
+A: You should use |denite.nvim| plugin instead.
 
 Q: Support for existing vim settings like Command-T plugin? Example,
 'grepprg', 'suffixes'...

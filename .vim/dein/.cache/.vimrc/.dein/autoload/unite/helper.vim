@@ -468,6 +468,7 @@ function! unite#helper#get_choose_windows() abort "{{{
         \ !getwinvar(v:val, '&previewwindow')
         \ && getwinvar(v:val, '&filetype') !=# 'vimfiler'
         \ && getwinvar(v:val, '&filetype') !=# 'unite'
+        \ && getwinvar(v:val, '&buftype') !~# 'terminal'
         \ && (getwinvar(v:val, '&buftype') !~# 'nofile'
         \   || getwinvar(v:val, '&buftype') =~# 'acwrite')
         \ && getwinvar(v:val, '&filetype') !=# 'qf'")
@@ -505,32 +506,12 @@ function! unite#helper#skip_prompt() abort "{{{
   endif
 endfunction"}}}
 
-if unite#util#has_lua()
-  function! unite#helper#paths2candidates(paths) abort "{{{
-    let candidates = []
-  lua << EOF
-do
-  local paths = vim.eval('a:paths')
-  local candidates = vim.eval('candidates')
-  for path in paths() do
-    local candidate = vim.dict()
-    candidate.word = path
-    candidate.action__path = path
-    candidates:add(candidate)
-  end
-end
-EOF
-
-    return candidates
-  endfunction"}}}
-else
-  function! unite#helper#paths2candidates(paths) abort "{{{
-    return map(copy(a:paths), "{
-          \ 'word' : v:val,
-          \ 'action__path' : v:val,
-          \ }")
-  endfunction"}}}
-endif
+function! unite#helper#paths2candidates(paths) abort "{{{
+  return map(copy(a:paths), "{
+        \ 'word' : v:val,
+        \ 'action__path' : v:val,
+        \ }")
+endfunction"}}}
 
 function! unite#helper#get_candidate_directory(candidate) abort "{{{
   return has_key(a:candidate, 'action__directory') ?
@@ -601,11 +582,6 @@ function! unite#helper#ignore_candidates(candidates, context) abort "{{{
     let candidates = unite#filters#filter_patterns(candidates,
           \ unite#filters#globs2patterns(a:context.ignore_globs),
           \ unite#filters#globs2patterns(a:context.white_globs))
-  endif
-
-  if a:context.path != ''
-    let candidates = unite#filters#{unite#util#has_lua()? 'lua' : 'vim'}
-          \_filter_head(candidates, a:context.path)
   endif
 
   return candidates

@@ -36,8 +36,12 @@ function! neocomplete#init#enable() abort "{{{
   endif
 
   if !(has('lua') && (v:version > 703 || v:version == 703 && has('patch885')))
-    echomsg 'neocomplete does not work with this version of Vim.'
     echomsg 'neocomplete requires Vim 7.3.885 or later with Lua support ("+lua").'
+    return
+  endif
+
+  if has('patch-8.2.1066')
+    echomsg 'neocomplete does not work with Vim 8.2.1066+.'
     return
   endif
 
@@ -150,21 +154,19 @@ function! neocomplete#init#_variables() abort "{{{
   call neocomplete#util#set_default_dictionary(
         \'g:neocomplete#keyword_patterns',
         \'ruby,int-irb',
-        \'^=\%(b\%[egin]\|e\%[nd]\)\|\%(@@\|[$@]\)\h\w*\|\h\w*\%(::\w*\)*[!?]\?')
+        \'^=\%(b\%[egin]\|e\%[nd]\)\|\%(@@\|[$@]\)\h\w*\|\h\w*[!?]\?')
   call neocomplete#util#set_default_dictionary(
         \'g:neocomplete#keyword_patterns',
         \'php,int-php',
-        \'</\?\%(\h[[:alnum:]_-]*\s*\)\?\%(/\?>\)\?'.
-        \'\|\$\h\w*\|\h\w*\%(\%(\\\|::\)\w*\)*')
+        \'</\?\%(\h[[:alnum:]_-]*\s*\)\?\%(/\?>\)\?\|\$\h\w*\|\h\w*')
   call neocomplete#util#set_default_dictionary(
         \'g:neocomplete#keyword_patterns',
         \'perl,int-perlsh',
-        \'<\h\w*>\?\|[$@%&*]\h\w*\|\h\w*\%(::\w*\)*')
+        \'<\h\w*>\?\|[$@%&*]\h\w*\|\h\w*')
   call neocomplete#util#set_default_dictionary(
         \'g:neocomplete#keyword_patterns',
         \'perl6,int-perl6',
-        \'<\h\w*>\?\|[$@%&][!.*?]\?\h[[:alnum:]_-]*'.
-        \'\|\h[[:alnum:]_-]*\%(::[[:alnum:]_-]*\)*')
+        \'<\h\w*>\?\|[$@%&][!.*?]\?\h[[:alnum:]_-]*\|\h[[:alnum:]_-]*')
   call neocomplete#util#set_default_dictionary(
         \'g:neocomplete#keyword_patterns',
         \'pir',
@@ -264,7 +266,7 @@ function! neocomplete#init#_variables() abort "{{{
   call neocomplete#util#set_default_dictionary(
         \'g:neocomplete#keyword_patterns',
         \'css,stylus,scss,less',
-        \'[@#.]\?[[:alpha:]_:-][[:alnum:]_:-]*')
+        \'[@#.]\?[[:alpha:]_-][[:alnum:]_-]*')
   call neocomplete#util#set_default_dictionary(
         \'g:neocomplete#keyword_patterns',
         \'tags',
@@ -531,7 +533,6 @@ function! neocomplete#init#_source(source) abort "{{{
         \ 'sorters' : ['sorter_rank'],
         \ 'converters' : [
         \      'converter_remove_overlap',
-        \      'converter_delimiter',
         \      'converter_abbr',
         \ ],
         \ 'keyword_patterns' : g:neocomplete#keyword_patterns,
