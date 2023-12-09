@@ -65,3 +65,4 @@ function is_ssh_running() { [ ! -z "$SSH_CONECTION" ]; }
 
 
 export PATH="/usr/local/sbin:$PATH"
+eval $(/opt/homebrew/bin/brew shellenv)
