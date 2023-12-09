@@ -1,0 +1,1 @@
+/Users/satoshi/dotfiles_macbook/.vim

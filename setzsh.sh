@@ -2,7 +2,7 @@
 
 #install zaw
 cd ~
-git clone git://github.com/zsh-users/zaw.git
+git clone https://github.com/zsh-users/zaw.git
 
 #copy .zshrc .zshenv
 sh ~/dotfiles_macbook/dotfileLinks.sh
